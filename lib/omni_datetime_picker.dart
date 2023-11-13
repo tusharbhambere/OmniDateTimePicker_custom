@@ -47,7 +47,7 @@ Future<DateTime?> showOmniDateTimePicker({
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: MediaQuery.of(context).size.height * 2.4 / 3,
+        height: MediaQuery.of(context).size.height * 2.3 / 3,
         child: OmniDateTimePicker(
           separator: separator,
           title: title,
@@ -105,7 +105,7 @@ Future<List<DateTime>?> showOmniDateTimeRangePicker({
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: MediaQuery.of(context).size.height * 2.4 / 3,
+        height: MediaQuery.of(context).size.height * 2.3 / 3,
         child: OmniDateTimeRangePicker(
           type: type,
           startInitialDate: startInitialDate,
