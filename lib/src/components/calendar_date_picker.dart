@@ -385,13 +385,13 @@ class _DatePickerModeToggleButtonState
                     child: Row(
                       children: <Widget>[
                         Flexible(
-                          child: Text(
-                            widget.title,
-                            overflow: TextOverflow.ellipsis,
-                            style: textTheme.titleSmall?.copyWith(
-                              color: controlColor,
-                            ),
-                          ),
+                          child: Text(widget.title,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Display-Semibold',
+                                color: Color(0xFF574d61),
+                              )),
                         ),
                         RotationTransition(
                           turns: _controller,
@@ -748,8 +748,7 @@ class _MonthPickerState extends State<_MonthPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final Color controlColor =
-        Theme.of(context).colorScheme.onSurface.withOpacity(0.60);
+    const Color controlColor = Color(0xFF8041e0);
 
     return Semantics(
       child: Column(
@@ -952,16 +951,23 @@ class _DayPickerState extends State<_DayPicker> {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
-    final TextTheme textTheme = Theme.of(context).textTheme;
-    final TextStyle? headerStyle = textTheme.bodySmall?.apply(
-      color: colorScheme.onSurface.withOpacity(0.60),
+    TextStyle? headerStyle = const TextStyle(
+      fontSize: 13,
+      letterSpacing: 0.1,
+      fontFamily: 'Display-Semibold',
+      color: Color(0xFF574d61),
     );
-    final TextStyle dayStyle = textTheme.bodySmall!;
+    TextStyle dayStyle = const TextStyle(
+      fontSize: 13,
+      letterSpacing: 0.1,
+      fontFamily: 'Display-Regular',
+      color: Color(0xFF574d61),
+    );
     final Color enabledDayColor = colorScheme.onSurface.withOpacity(0.87);
     final Color disabledDayColor = colorScheme.onSurface.withOpacity(0.38);
     final Color selectedDayColor = colorScheme.onPrimary;
-    final Color selectedDayBackground = colorScheme.primary;
-    final Color todayColor = colorScheme.primary;
+    const Color selectedDayBackground = Color(0xFF8041e0);
+    const Color todayColor = Color(0xFF8041e0);
 
     final int year = widget.displayedMonth.year;
     final int month = widget.displayedMonth.month;
