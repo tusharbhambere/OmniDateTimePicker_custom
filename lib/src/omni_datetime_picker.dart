@@ -3,24 +3,24 @@ import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:omni_datetime_picker/src/variants/omni_datetime_picker_variants/omni_dtp_basic.dart';
 
 class OmniDateTimePicker extends StatelessWidget {
-  const OmniDateTimePicker(
-      {super.key,
-      this.separator,
-      this.title,
-      this.initialDate,
-      this.firstDate,
-      this.lastDate,
-      this.isShowSeconds,
-      this.is24HourMode,
-      this.minutesInterval,
-      this.secondsInterval,
-      this.isForce2Digits,
-      this.borderRadius,
-      this.constraints,
-      required this.type,
-      this.selectableDayPredicate});
+  const OmniDateTimePicker({
+    Key? key,
+    this.separator,
+    this.title,
+    this.initialDate,
+    this.firstDate,
+    this.lastDate,
+    this.isShowSeconds,
+    this.is24HourMode,
+    this.minutesInterval,
+    this.secondsInterval,
+    this.isForce2Digits,
+    this.borderRadius,
+    this.constraints,
+    required this.type,
+    this.selectableDayPredicate,
+  }) : super(key: key);
 
-  /// A widget that separates the [title] - if not null - and the calendar, also separates between date and time pickers
   final Widget? separator;
   final Widget? title;
   final DateTime? initialDate;
@@ -38,29 +38,24 @@ class OmniDateTimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      alignment: Alignment.center,
-      shape: Theme.of(context).useMaterial3
-          ? null
-          : borderRadius != null
-              ? RoundedRectangleBorder(
-                  borderRadius: borderRadius!,
-                )
-              : null,
-      child: OmniDtpBasic(
-        title: title,
-        separator: separator,
-        initialDate: initialDate,
-        firstDate: firstDate,
-        lastDate: lastDate,
-        is24HourMode: is24HourMode,
-        isShowSeconds: isShowSeconds,
-        minutesInterval: minutesInterval,
-        secondsInterval: secondsInterval,
-        isForce2Digits: isForce2Digits,
-        constraints: constraints,
-        type: type,
-        selectableDayPredicate: selectableDayPredicate,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: OmniDtpBasic(
+          title: title,
+          separator: separator,
+          initialDate: initialDate,
+          firstDate: firstDate,
+          lastDate: lastDate,
+          is24HourMode: is24HourMode,
+          isShowSeconds: isShowSeconds,
+          minutesInterval: minutesInterval,
+          secondsInterval: secondsInterval,
+          isForce2Digits: isForce2Digits,
+          constraints: constraints,
+          type: type,
+          selectableDayPredicate: selectableDayPredicate,
+        ),
       ),
     );
   }
