@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:omni_datetime_picker/src/omni_datetime_picker.dart';
 import 'package:omni_datetime_picker/src/omni_datetime_range_picker.dart';
 
-/// Show dialog of the [OmniDateTimePicker]
+/// Show bottom modal sheet of the [OmniDateTimePicker]
 ///
 /// Returns a DateTime
 ///
@@ -31,53 +31,48 @@ Future<DateTime?> showOmniDateTimePicker({
   Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
       transitionBuilder,
   Duration? transitionDuration,
-  bool? barrierDismissible,
   OmniDateTimePickerType type = OmniDateTimePickerType.dateAndTime,
   final bool Function(DateTime)? selectableDayPredicate,
   ThemeData? theme,
 }) {
-  return showGeneralDialog(
+  return showModalBottomSheet(
+    isScrollControlled: true, // Set this to true
+
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(10),
+      ),
+    ),
+    clipBehavior: Clip.antiAliasWithSaveLayer,
     context: context,
-    transitionBuilder: transitionBuilder ??
-        (context, anim1, anim2, child) {
-          return FadeTransition(
-            opacity: anim1.drive(
-              Tween(
-                begin: 0,
-                end: 1,
-              ),
-            ),
-            child: child,
-          );
-        },
-    transitionDuration: transitionDuration ?? const Duration(milliseconds: 200),
-    barrierDismissible: barrierDismissible ?? true,
-    barrierLabel: 'OmniDateTimePicker',
-    pageBuilder: (BuildContext context, anim1, anim2) {
+    builder: (BuildContext context) {
       return Theme(
         data: theme ?? Theme.of(context),
-        child: OmniDateTimePicker(
-          separator: separator,
-          title: title,
-          type: type,
-          initialDate: initialDate,
-          firstDate: firstDate,
-          lastDate: lastDate,
-          is24HourMode: is24HourMode,
-          isShowSeconds: isShowSeconds,
-          minutesInterval: minutesInterval,
-          secondsInterval: secondsInterval,
-          isForce2Digits: isForce2Digits,
-          borderRadius: borderRadius,
-          constraints: constraints,
-          selectableDayPredicate: selectableDayPredicate,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 2.4 / 3,
+          child: OmniDateTimePicker(
+            separator: separator,
+            title: title,
+            type: type,
+            initialDate: initialDate,
+            firstDate: firstDate,
+            lastDate: lastDate,
+            is24HourMode: is24HourMode,
+            isShowSeconds: isShowSeconds,
+            minutesInterval: minutesInterval,
+            secondsInterval: secondsInterval,
+            isForce2Digits: isForce2Digits,
+            borderRadius: borderRadius,
+            constraints: constraints,
+            selectableDayPredicate: selectableDayPredicate,
+          ),
         ),
       );
     },
   );
 }
 
-/// Show a dialog of the [OmniDateTimePicker]
+/// Show bottom modal sheet of the [OmniDateTimeRangePicker]
 ///
 /// Returns a List<DateTime>
 /// with index 0 as startDateTime
@@ -107,43 +102,33 @@ Future<List<DateTime>?> showOmniDateTimeRangePicker({
   ThemeData? theme,
   DefaultView defaultView = DefaultView.start,
 }) {
-  return showGeneralDialog(
+  return showModalBottomSheet(
+    isScrollControlled: true, // Set this to true
+
     context: context,
-    transitionBuilder: transitionBuilder ??
-        (context, anim1, anim2, child) {
-          return FadeTransition(
-            opacity: anim1.drive(
-              Tween(
-                begin: 0,
-                end: 1,
-              ),
-            ),
-            child: child,
-          );
-        },
-    transitionDuration: transitionDuration ?? const Duration(milliseconds: 200),
-    barrierDismissible: barrierDismissible ?? true,
-    barrierLabel: 'OmniDateTimeRangePicker',
-    pageBuilder: (BuildContext context, anim1, anim2) {
+    builder: (BuildContext context) {
       return Theme(
         data: theme ?? Theme.of(context),
-        child: OmniDateTimeRangePicker(
-          type: type,
-          startInitialDate: startInitialDate,
-          startFirstDate: startFirstDate,
-          startLastDate: startLastDate,
-          endInitialDate: endInitialDate,
-          endFirstDate: endFirstDate,
-          endLastDate: endLastDate,
-          is24HourMode: is24HourMode,
-          isShowSeconds: isShowSeconds,
-          minutesInterval: minutesInterval,
-          secondsInterval: secondsInterval,
-          isForce2Digits: isForce2Digits,
-          borderRadius: borderRadius,
-          constraints: constraints,
-          selectableDayPredicate: selectableDayPredicate,
-          defaultView: defaultView,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 2.4 / 3,
+          child: OmniDateTimeRangePicker(
+            type: type,
+            startInitialDate: startInitialDate,
+            startFirstDate: startFirstDate,
+            startLastDate: startLastDate,
+            endInitialDate: endInitialDate,
+            endFirstDate: endFirstDate,
+            endLastDate: endLastDate,
+            is24HourMode: is24HourMode,
+            isShowSeconds: isShowSeconds,
+            minutesInterval: minutesInterval,
+            secondsInterval: secondsInterval,
+            isForce2Digits: isForce2Digits,
+            borderRadius: borderRadius,
+            constraints: constraints,
+            selectableDayPredicate: selectableDayPredicate,
+            defaultView: defaultView,
+          ),
         ),
       );
     },
