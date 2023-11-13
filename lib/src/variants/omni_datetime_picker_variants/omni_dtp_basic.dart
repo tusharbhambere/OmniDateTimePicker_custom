@@ -46,11 +46,13 @@ class OmniDtpBasic extends StatelessWidget {
       child: ConstrainedBox(
         constraints: constraints ??
             const BoxConstraints(
-              maxWidth: 350,
+              maxWidth: 450,
               maxHeight: 650,
             ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: [
             if (title != null) title!,
             if (title != null && separator != null) separator!,
