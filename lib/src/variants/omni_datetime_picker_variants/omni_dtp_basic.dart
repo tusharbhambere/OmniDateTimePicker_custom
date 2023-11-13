@@ -6,7 +6,7 @@ import 'package:omni_datetime_picker/src/components/time_picker_spinner.dart';
 
 class OmniDtpBasic extends StatelessWidget {
   const OmniDtpBasic({
-    super.key,
+    Key? key,
     this.separator,
     this.title,
     this.initialDate,
@@ -20,7 +20,7 @@ class OmniDtpBasic extends StatelessWidget {
     this.constraints,
     this.type,
     this.selectableDayPredicate,
-  });
+  }) : super(key: key);
 
   final Widget? separator;
   final Widget? title;
@@ -42,74 +42,77 @@ class OmniDtpBasic extends StatelessWidget {
 
     DateTime selectedDateTime = initialDate ?? DateTime.now();
 
-    return SingleChildScrollView(
-      child: ConstrainedBox(
-        constraints: constraints ??
-            const BoxConstraints(
-              maxWidth: 450,
-              maxHeight: 650,
-            ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            if (title != null) title!,
-            if (title != null && separator != null) separator!,
-            Calendar(
-              initialDate: initialDate,
-              firstDate: firstDate,
-              lastDate: lastDate,
-              onDateChanged: (value) {
-                DateTime tempDateTime = DateTime(
-                  value.year,
-                  value.month,
-                  value.day,
-                  selectedDateTime.hour,
-                  selectedDateTime.minute,
-                  isShowSeconds ?? false ? selectedDateTime.second : 0,
-                );
-
-                selectedDateTime = tempDateTime;
-              },
-              selectableDayPredicate: selectableDayPredicate,
-            ),
-            if (type == OmniDateTimePickerType.dateAndTime &&
-                (separator != null))
-              separator!,
-            if (type == OmniDateTimePickerType.dateAndTime)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24.0),
-                child: TimePickerSpinner(
-                  time: initialDate,
-                  amText: localizations.anteMeridiemAbbreviation,
-                  pmText: localizations.postMeridiemAbbreviation,
-                  isShowSeconds: isShowSeconds ?? false,
-                  is24HourMode: is24HourMode ?? false,
-                  minutesInterval: minutesInterval ?? 1,
-                  secondsInterval: secondsInterval ?? 1,
-                  isForce2Digits: isForce2Digits ?? false,
-                  onTimeChange: (value) {
-                    DateTime tempDateTime = DateTime(
-                      selectedDateTime.year,
-                      selectedDateTime.month,
-                      selectedDateTime.day,
-                      value.hour,
-                      value.minute,
-                      isShowSeconds ?? false ? value.second : 0,
-                    );
-
-                    selectedDateTime = tempDateTime;
-                  },
-                ),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: constraints ??
+              const BoxConstraints(
+                maxWidth: 450,
+                maxHeight: 650,
               ),
-            ButtonRow(onSavePressed: () {
-              Navigator.pop<DateTime>(
-                context,
-                selectedDateTime,
-              );
-            }),
-          ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (title != null) title!,
+              if (title != null && separator != null) separator!,
+              Calendar(
+                initialDate: initialDate,
+                firstDate: firstDate,
+                lastDate: lastDate,
+                onDateChanged: (value) {
+                  DateTime tempDateTime = DateTime(
+                    value.year,
+                    value.month,
+                    value.day,
+                    selectedDateTime.hour,
+                    selectedDateTime.minute,
+                    isShowSeconds ?? false ? selectedDateTime.second : 0,
+                  );
+
+                  selectedDateTime = tempDateTime;
+                },
+                selectableDayPredicate: selectableDayPredicate,
+              ),
+              if (type == OmniDateTimePickerType.dateAndTime &&
+                  separator != null)
+                separator!,
+              if (type == OmniDateTimePickerType.dateAndTime)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 24.0),
+                  child: TimePickerSpinner(
+                    time: initialDate,
+                    amText: localizations.anteMeridiemAbbreviation,
+                    pmText: localizations.postMeridiemAbbreviation,
+                    isShowSeconds: isShowSeconds ?? false,
+                    is24HourMode: is24HourMode ?? false,
+                    minutesInterval: minutesInterval ?? 1,
+                    secondsInterval: secondsInterval ?? 1,
+                    isForce2Digits: isForce2Digits ?? false,
+                    onTimeChange: (value) {
+                      DateTime tempDateTime = DateTime(
+                        selectedDateTime.year,
+                        selectedDateTime.month,
+                        selectedDateTime.day,
+                        value.hour,
+                        value.minute,
+                        isShowSeconds ?? false ? value.second : 0,
+                      );
+
+                      selectedDateTime = tempDateTime;
+                    },
+                  ),
+                ),
+              ButtonRow(onSavePressed: () {
+                Navigator.pop<DateTime>(
+                  context,
+                  selectedDateTime,
+                );
+              }),
+            ],
+          ),
         ),
       ),
     );
