@@ -24,20 +24,20 @@ class ButtonRow extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop<DateTime>();
               },
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.south,
                     size: 20,
                     color: Colors.white,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Text(
-                    localizations.cancelButtonLabel,
-                    style: const TextStyle(
+                    "Odustani",
+                    style: TextStyle(
                       fontSize: 13,
                       letterSpacing: 0.1,
                       fontFamily: 'Display-Semibold',
@@ -61,20 +61,20 @@ class ButtonRow extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: onSavePressed,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.east,
                     size: 20,
                     color: Colors.white,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Text(
-                    localizations.okButtonLabel,
-                    style: const TextStyle(
+                    "Potvrdi",
+                    style: TextStyle(
                       fontSize: 13,
                       letterSpacing: 0.1,
                       fontFamily: 'Display-Semibold',
