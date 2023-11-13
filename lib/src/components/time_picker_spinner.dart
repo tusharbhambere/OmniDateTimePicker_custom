@@ -224,7 +224,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
           () => isHourScrolling = false,
         ),
       ),
-      spacer(),
+      Container(width: 5),
       SizedBox(
         width: _getItemWidth(),
         height: _getItemHeight() * 3,
@@ -358,7 +358,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
                 text,
                 style: selectedIndex == index
                     ? const TextStyle(
-                        fontSize: 15,
+                        fontSize: 17,
                         fontFamily: 'Display-Bold',
                         color: Color(0xFF574d61),
                       )
