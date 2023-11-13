@@ -40,7 +40,7 @@ class OmniDateTimePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),
         child: OmniDtpBasic(
           title: title,
           separator: separator,
