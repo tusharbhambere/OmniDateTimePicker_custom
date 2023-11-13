@@ -357,8 +357,16 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
               child: Text(
                 text,
                 style: selectedIndex == index
-                    ? Theme.of(context).textTheme.headlineSmall
-                    : Theme.of(context).textTheme.bodyLarge,
+                    ? const TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Display-Bold',
+                        color: Color(0xFF574d61),
+                      )
+                    : const TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'Display-Semibold',
+                        color: Color(0xFF574d61),
+                      ),
               ),
             );
           },
