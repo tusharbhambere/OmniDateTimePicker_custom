@@ -7,8 +7,6 @@ class ButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = MaterialLocalizations.of(context);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
@@ -36,7 +34,7 @@ class ButtonRow extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    "Odustani",
+                    "Cancel",
                     style: TextStyle(
                       fontSize: 13,
                       letterSpacing: 0.1,
@@ -73,7 +71,7 @@ class ButtonRow extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    "Potvrdi",
+                    "Select",
                     style: TextStyle(
                       fontSize: 13,
                       letterSpacing: 0.1,

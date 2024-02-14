@@ -363,7 +363,6 @@ class _DatePickerModeToggleButtonState
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    final TextTheme textTheme = Theme.of(context).textTheme;
     final Color controlColor = colorScheme.onSurface.withOpacity(0.60);
 
     return Container(
@@ -1000,7 +999,7 @@ class _DayPickerState extends State<_DayPicker> {
           // The selected day gets a circle background highlight, and a
           // contrasting text color.
           dayColor = selectedDayColor;
-          decoration = BoxDecoration(
+          decoration = const BoxDecoration(
             color: selectedDayBackground,
             shape: BoxShape.circle,
           );
